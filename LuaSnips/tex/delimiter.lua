@@ -1,0 +1,59 @@
+-- -- local function create_delimiter_snippet(open_delim, close_delim)
+-- --     return s({
+-- --         trig = open_delim,
+-- --         name = "delimiters",
+-- --         snippetType = "autosnippet",
+-- --     }, {
+-- --         t(open_delim),
+-- --         i(1),
+-- --         t(close_delim),
+-- --     })
+-- -- end
+--
+-- -- local function create_delimiter_snippet(open_delim, close_delim, pattern, priority)
+-- --     return s({
+-- --         trig = pattern,
+-- --         name = "delimiters",
+-- --         snippetType = "autosnippet",
+-- --         regTrig = true,
+-- --         priority = priority,
+-- --     }, {
+-- --         t(open_delim),
+-- --         i(1),
+-- --         t(close_delim),
+-- --     })
+-- -- end
+--
+-- local snippets = {
+--     -- create_delimiter_snippet('(', ')'),
+--     -- create_delimiter_snippet('[', ']'),
+--     -- create_delimiter_snippet('{', '}'),
+--     -- create_delimiter_snippet('\\left(', '\\right)'),
+--     -- create_delimiter_snippet('\\left[', '\\right]'),
+--     -- create_delimiter_snippet('\\left\\{', '\\right\\}'),
+--
+--     -- create_delimiter_snippet('(', ')', '[A-Za-z_]?%(', 1000),
+--     -- create_delimiter_snippet('[', ']', '[A-Za-z_]?%[', 1000),
+--     -- create_delimiter_snippet('{', '}', '[A-Za-z_]?%{', 1000),
+--     -- create_delimiter_snippet('\\left(', '\\right)', '[A-Za-z_]?\\left%(', 2000),
+--     -- create_delimiter_snippet('\\left[', '\\right]', '[A-Za-z_]?\\left%[', 2000),
+--     -- create_delimiter_snippet('\\left\\{', '\\right\\}', '[A-Za-z_]?\\left\\%{', 2000),
+-- }
+--
+-- table.insert(snippets, s({
+--     trig = "([A-Za-z_])?(%\\left)?(%\\)?([%(%[%{])", desc = "Delimiters Match",
+--     snippetType = "autosnippet",
+--     regTrig = true,
+--     wordTrig = false,
+--     -- trigEngine = "pattern",
+--     priority = 2000,
+--     },{
+--         f(function (_, snip)
+--             return snip.trig
+--         end, {}),
+--         i(1),
+--         t("Haft"),
+--     }
+-- ))
+--
+-- return snippets
