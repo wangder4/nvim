@@ -34,6 +34,7 @@ local opts = {
         { import = "plugins.tools" },
         { import = "plugins.dev_env" },
         { import = "plugins.dev_env.latex" },
+        { import = "plugins.dev_env.lsp" },
     },
     -- highlight-end
 
