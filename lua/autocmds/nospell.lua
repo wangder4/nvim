@@ -11,7 +11,7 @@ end
 local ignore_file_patterns = { '.gitignore' }
 
 -- file types to ignore spell
-local ignore_filetypes = { 'checkhealth' }
+local ignore_filetypes = { 'checkhealth', 'sshconfig' }
 
 -- autocmd for .gitignore files
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
