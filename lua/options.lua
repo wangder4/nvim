@@ -25,6 +25,7 @@ set.wrap = false
 set.termguicolors = true
 set.cursorline = true
 set.colorcolumn = '80'
+set.foldexpr = "v:lua.require'conform'.formatexpr()"
 -- vim.o.list = true
 -- vim.opt.listchars = {
 --     tab = "▏ ",
@@ -36,8 +37,8 @@ set.colorcolumn = '80'
 
 -- Edit options
 -- use zg to add new words to local dictionary, use zw to remove it.
-set.spell = true        
-set.spelllang = { "en", "cjk"}
+set.spell = true
+set.spelllang = { "en", "cjk" }
 
 -- Tab options
 set.shiftwidth = 4
@@ -73,6 +74,9 @@ set.suffixes = { '.o', '.dvi' , 'bbl'}
 
 -- Window options
 -- set.splitbelow = true
+
+-- netrw options
+vim.g.netrw_list_hide = '.aux$'
 
 -- Performance options
 set.confirm = true
