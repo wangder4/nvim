@@ -35,6 +35,8 @@ local function init()
     vim.g.vimtex_syntax_custom_cmds = {
         { name = 'complement', mathmode = 1, concealchar = '∁'},
         { name = 'O', mathmode = 1, concealchar = '∅'},
+        { name = 'R', mathmode = 1, concealchar = 'ℝ'},
+        { name = 'Z', mathmode = 1, concealchar = 'ℤ'},
     }
 
     -- vim.g.vimtex_quickfix_ignore_filters = {
@@ -55,4 +57,5 @@ return {
     lazy = false,
     version = "*",
     init = init,
+    enable=false,
 }
