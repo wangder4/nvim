@@ -29,6 +29,25 @@ local function lua_ls_conf()
     lspconfig.lua_ls.setup(lua_ls_opts)
 end
 
+local function svlangserver_conf()
+    local lspconfig = require("lspconfig")
+    local svlangserver_opts = {
+        on_init = function(client)
+            -- local path = client.workspace_folders[1].name                    
+
+            client.config.settings.systemverilog = {
+                launchConfiguration = "/tools/verilator -Wall --timing --lint-only",
+            }
+
+            -- if path == '' then                                               
+            -- end                                                              
+        end
+    }
+
+    lspconfig.svlangserver.setup(svlangserver_opts)
+end
+
+
 local function mason_config()
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
@@ -39,13 +58,13 @@ local function mason_config()
                 package_installed = "✓",
                 package_pending = "-",
                 package_uninstalled = "✗"
-            }
-        }
+            },
+        },
     }
 
     local mason_lspconfig_opts = {
         ensure_installed = {
-            -- Program languages
+            -- Program languages servers
             "clangd",       -- C, C++
             "lua_ls",       -- lua
             "matlab_ls",    -- matlab
@@ -53,7 +72,8 @@ local function mason_config()
             "hdl_checker",  -- System Verilog, verilog, VHDL
             "svlangserver", -- System Verilog
             -- "svls",         -- System Verilog, verilog, * requires cargo, a rust package manager
-            "verible",      -- System Verilog, verilog
+            -- "verible",      -- System Verilog, verilog
+
             "vimls",        -- VimScript
             -- System Used
             "bashls",
@@ -67,7 +87,6 @@ local function mason_config()
         automatic_installation = true
     }
 
-
     mason.setup(mason_opts)
     mason_lspconfig.setup(mason_lspconfig_opts)
 
@@ -79,6 +98,7 @@ local function mason_config()
         end,
         -- Specific settings
         ["lua_ls"] = lua_ls_conf,
+        ["svlangserver"] = svlangserver_conf,
     }
 end
 
