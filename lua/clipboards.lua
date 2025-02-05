@@ -37,10 +37,10 @@ else
             ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
         },
         paste = {
-            ['+'] = my_paste("+"),
-            ['*'] = my_paste("*"),
-            -- ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-            -- ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+            -- ['+'] = my_paste("+"),
+            -- ['*'] = my_paste("*"),
+            ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
         },
         cache_enabled = 0,
     }
