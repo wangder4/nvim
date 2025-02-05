@@ -76,7 +76,7 @@ set.suffixes = { '.o', '.dvi' , 'bbl'}
 -- set.splitbelow = true
 
 -- netrw options
-vim.g.netrw_list_hide = '.aux$'
+vim.g.netrw_list_hide = [[.aux$,.o$,.fdb_latexmk$,.fls$,.synctex.gz$]]
 
 -- Performance options
 set.confirm = true
