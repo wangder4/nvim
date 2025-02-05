@@ -38,6 +38,10 @@ noremap('n', '\\\\', ':nohlsearch<CR>', { silent = true })
 noremap('n', '||', ':lua pcall(ToggleCC)<CR>', { silent = true })
 -- *** Toggle spell check
 noremap('n', '\\s', ':set spell!<CR>', { silent = true })
+-- *** Apply LSP Code Action
+noremap('n', '\\ca', ':lua vim.lsp.buf.code_action()<CR>')
+-- *** Apply LSP Rename
+noremap('v', '\\rn', ":'<,'> lua vim.lsp.buf.rename()<CR>")
 
 -- vim.cmd('nnoremap <Leader>/ /\\C<c-r>=getreg('/')<CR><CR>')
 -- noremap('n', '<Leader>/', '/\\C<c-r>=getreg('/')<Cr><Cr>', { silent = true })
