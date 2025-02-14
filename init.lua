@@ -10,15 +10,22 @@ require("options")      -- Non-plugin options
 local autocmds_dir = '/lua/autocmds/'
 utils.require_all_files_in_dir(autocmds_dir)
 
+-- Temporarily disable providers, not used.
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+
 -- Setup providers executables explicitly if applicable
-local wls_perl_host = '/usr/bin/perl'
-local wls_python3_host = '/home/timachine/.pyvenv/311/bin/python3'
-local wls_nodejs_host = '/home/timachine/.nvm/versions/node/v20.11.1/lib/node_modules/neovim/bin/cli.js'
+local python3_host = ""
+local nodejs_host = ""
+
+if os.getenv('WSL_DISTRO_NAME') == "Debian" then
+    python3_host = vim.fn.expand('~/.pyvenv/311/bin/python3')
+    nodejs_host  = vim.fn.expand('~/.nvm/versions/node/v20.11.1/lib/node_modules/neovim/bin/cli.js')
+end
 
 local hosts = {
-    perl_host_prog = wls_perl_host,
-    python3_host_prog = wls_python3_host,
-    node_host_prog = wls_nodejs_host
+    python3_host_prog = python3_host,
+    node_host_prog = nodejs_host
 }
 
 for host, host_path in pairs(hosts) do
@@ -27,9 +34,6 @@ end
 
 require("bootstrap")    -- Lazy.vim startup, enable plugins
 require("tunings")      -- nvim options for plug-in co-operation
-
--- Temporarily disable providers, not used.
-vim.g.loaded_ruby_provider = 0
 
 -- Setup cursor style, not working
 -- vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
