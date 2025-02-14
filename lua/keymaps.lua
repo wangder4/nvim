@@ -29,7 +29,9 @@ noremap('n', '<Space>e', ':b#<CR>')
 noremap('n', '<Space>p', ':Explore<CR>')
 noremap('n', '<Space><Space>', 'za')
 noremap('i', 'jf', '<ESC>')
+noremap('i', 'fj', '<ESC>')
 noremap('c', 'jf', '<ESC>')
+noremap('c', 'fj', '<ESC>')
 
 -- Utility Mappings
 -- *** Temporarily disable search highlights
