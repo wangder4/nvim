@@ -23,3 +23,4 @@ end
 
 -- Link event and triggers.
 set_filetype_for("*.tex", "tex")
+set_filetype_for("*.core", "conf")
