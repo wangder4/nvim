@@ -8,7 +8,8 @@ set.showmode = true
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = " "
 vim.g.editorconfig = true
-vim.o.signcolumn = "yes"
+-- vim.o.signcolumn = "yes"
+vim.o.signcolumn = "no"
 
 -- Undo options
 vim.o.undofile = true
@@ -18,7 +19,7 @@ vim.o.undolevels = 10000
 vim.o.inccommand = "split"
 set.foldcolumn = '1'
 set.number = true
-set.numberwidth = 5
+set.numberwidth = 3
 set.scrolloff = 5
 set.sidescrolloff = 3
 set.wrap = false

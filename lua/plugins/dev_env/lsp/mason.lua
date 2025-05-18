@@ -11,15 +11,15 @@ local function lua_ls_conf()
                         -- vim related APIs
                         "vim",
                         -- Luasnip related APIs
-                        "s",        -- snippet
-                        "t",        -- text node
-                        "c",        -- choice node
-                        "i",        -- insert node
-                        "f",        -- function node
-                        "rep",      -- repeat
-                        "fmt",      -- auto format
-                        "fmta",     -- auto format with <>
-                        "conds",    -- luasnip.expand.extra_conditions
+                        "s",     -- snippet
+                        "t",     -- text node
+                        "c",     -- choice node
+                        "i",     -- insert node
+                        "f",     -- function node
+                        "rep",   -- repeat
+                        "fmt",   -- auto format
+                        "fmta",  -- auto format with <>
+                        "conds", -- luasnip.expand.extra_conditions
                     },
                 },
             },
@@ -29,24 +29,66 @@ local function lua_ls_conf()
     lspconfig.lua_ls.setup(lua_ls_opts)
 end
 
+local function pylsp_conf()
+    require 'lspconfig'.pylsp.setup {
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        ignore = { 'W391', 'E501', 'W503', 'E203', 'E266' },
+                        -- maxLineLength = 100
+                    }
+                }
+            }
+        }
+    }
+end
+
 local function svlangserver_conf()
     local lspconfig = require("lspconfig")
     local svlangserver_opts = {
         on_init = function(client)
-            -- local path = client.workspace_folders[1].name                    
-
             client.config.settings.systemverilog = {
                 launchConfiguration = "/tools/verilator -Wall --timing --lint-only",
             }
-
-            -- if path == '' then                                               
-            -- end                                                              
         end
     }
 
     lspconfig.svlangserver.setup(svlangserver_opts)
 end
 
+local function verible_conf()
+    local lspconfig = require("lspconfig")
+    local verible_opts = {
+        -- Ask verible to search configuration rules
+        cmd = { 'verible-verilog-ls', '--rules_config_search' }
+    }
+
+    lspconfig.verible.setup(verible_opts)
+end
+
+local function clangd_conf()
+    local lspconfig = require("lspconfig")
+    local clangd_opts = {
+        cmd = {
+            'clangd',
+            -- '--query-driver=/usr/bin**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
+            '--all-scopes-completion',
+            '--background-index',
+            '--clang-tidy',
+            '--completion-style=detailed',
+            '--enable-config',
+            '--folding-ranges',
+            '--function-arg-placeholders',
+            '--header-insertion=iwyu',
+            '--header-insertion-decorators',
+            '--pch-storage=memory',
+            '--malloc-trim',
+        }
+    }
+
+    lspconfig.clangd.setup(clangd_opts);
+end
 
 local function mason_config()
     local mason = require("mason")
@@ -69,10 +111,10 @@ local function mason_config()
             "lua_ls",       -- lua
             "matlab_ls",    -- matlab
             "pylsp",        -- python
-            "hdl_checker",  -- System Verilog, verilog, VHDL
+            -- "hdl_checker",  -- System Verilog, verilog, VHDL
             "svlangserver", -- System Verilog
             -- "svls",         -- System Verilog, verilog, * requires cargo, a rust package manager
-            -- "verible",      -- System Verilog, verilog
+            "verible",      -- System Verilog, verilog
 
             "vimls",        -- VimScript
             -- System Used
@@ -93,12 +135,15 @@ local function mason_config()
     -- Automatic setup lsp, check :h mason-lspconfig-automatic-server-setup
     mason_lspconfig.setup_handlers {
         -- Default settings
-        function (server_name) -- default handler (optional)
+        function(server_name) -- default handler (optional)
             require("lspconfig")[server_name].setup {}
         end,
         -- Specific settings
         ["lua_ls"] = lua_ls_conf,
         ["svlangserver"] = svlangserver_conf,
+        ["pylsp"] = pylsp_conf,
+        ["clangd"] = clangd_conf,
+        ["verible"] = verible_conf,
     }
 end
 

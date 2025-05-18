@@ -37,6 +37,8 @@ local function init()
         { name = 'O', mathmode = 1, concealchar = '∅'},
         { name = 'R', mathmode = 1, concealchar = 'ℝ'},
         { name = 'Z', mathmode = 1, concealchar = 'ℤ'},
+        { name = 'odif', mathmode = 1, concealchar = 'd'},
+        { name = 'pdif', mathmode = 1, concealchar = '∂'},
     }
 
     -- vim.g.vimtex_quickfix_ignore_filters = {

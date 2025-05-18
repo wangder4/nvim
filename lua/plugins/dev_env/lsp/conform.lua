@@ -22,14 +22,26 @@ local function config()
         default_format_opts = {
             lsp_format = "fallback",
         },
-        format_on_save = {
-            lsp_fallback = true,
-            async = false,
-            timeout_ms = 500,
-        },
+        format_on_save = function(bufnr)
+            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+                return
+            end
+            return { timeout_ms = 500, lsp_format = "fallback" }
+        end,
     }
 
     conform.setup(conform_opt)
+
+    vim.api.nvim_create_user_command("FormatDisable", function(args)
+        if args.bang then
+            vim.b.disable_autoformat = true
+        else
+            vim.g.disable_autoformat = true
+        end
+    end, {
+        desc = "Disable autoformat-on-save",
+        bang = true,
+    })
 
     -- -- Using conform to set foldexpr
     -- vim.o.foldexpr = "v:lua.require'conform'.formatexpr()"
