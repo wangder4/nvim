@@ -41,9 +41,9 @@ local function init()
         { name = 'pdif', mathmode = 1, concealchar = '∂'},
     }
 
-    -- vim.g.vimtex_quickfix_ignore_filters = {
-    --     'references'
-    -- }
+    vim.g.vimtex_quickfix_ignore_filters = {
+        'bad break',
+    }
 
     vim.g.vimtex_mappings_enable = 0
     vim.g.imaps_enabled = 0
