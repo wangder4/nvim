@@ -1,5 +1,5 @@
 -- -- Lua does not recognize my files. Include it to access functions in utils.lua
--- package.path = package.path .. ';' .. vim.fn.stdpath('config') .. '/?.lua'
+package.path = package.path .. ';' .. vim.fn.stdpath('config') .. '/?.lua'
 local utils = require("utils")
 
 require("keymaps")    -- Non-plugin mapping
