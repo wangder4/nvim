@@ -45,7 +45,6 @@ vim.opt.wildignore:append { '*.pyc', 'node_modules' }
 vim.g.wildmode = { 'longest:list' }
 
 -- Timer setting
-vim.o.updatetime = 250
 vim.o.timeoutlen = 300 -- Decrease mapped sequence wait time
 
 -- use zg to add new words to local dictionary, use zw to remove it.
