@@ -17,8 +17,8 @@ vim.o.signcolumn = "yes"
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.sidescrolloff = 10
-vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.o.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- vim.opt.foldcolumn = 1
 vim.opt.colorcolumn = '80'
 
