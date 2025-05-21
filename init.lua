@@ -2,8 +2,8 @@
 -- package.path = package.path .. ';' .. vim.fn.stdpath('config') .. '/?.lua'
 local utils = require("utils")
 
-require("options")    -- Non-plugin options
 require("keymaps")    -- Non-plugin mapping
+require("options")    -- Non-plugin options
 require("clipboards") -- Setup clipboards, WSL or OSC 52
 
 -- Load plugin-free autocmds

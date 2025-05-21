@@ -40,8 +40,8 @@ vim.cmd('set foldopen-=search') -- Search don't open fold
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
-vim.g.wildignore:append { '*.o', '*.a', '__pycache__' }
-vim.g.wildignore:append { '*.pyc', 'node_modules' }
+vim.opt.wildignore:append { '*.o', '*.a', '__pycache__' }
+vim.opt.wildignore:append { '*.pyc', 'node_modules' }
 vim.g.wildmode = { 'longest:list' }
 
 -- Timer setting
@@ -50,7 +50,7 @@ vim.o.timeoutlen = 300 -- Decrease mapped sequence wait time
 
 -- use zg to add new words to local dictionary, use zw to remove it.
 vim.o.spell = true
-vim.o.spelllang = { "en", "cjk" }
+vim.opt.spelllang = { "en", "cjk" }
 
 vim.g.netrw_list_hide = [[.aux$,.o$,.fdb_latexmk$,.fls$,.synctex.gz$]]
 
