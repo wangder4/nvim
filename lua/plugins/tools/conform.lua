@@ -6,7 +6,7 @@ local function config()
 	local conform_opt = {
 		notify_on_error = false,
 		formatters_by_ft = {
-			lua = { "stylua" },
+			-- lua = { "stylua" },  -- 8 space tab, too ugly
 			python = { "isort", "black" },
 		},
 		format_on_save = function(bufnr)
@@ -33,7 +33,7 @@ return {
 		{
 			"<leader>fm",
 			function()
-				require("conform").format({ async = true, lsp_format = 'fallback' })
+				require("conform").format({ async = true, lsp_format = "fallback" })
 			end,
 			mode = "",
 			desc = "[F]ormat buffer",

@@ -29,13 +29,4 @@ function utils.require_all_files_in_dir(directory)
     end
 end
 
-
-function utils.set_host_prog(host, host_path)
-    if utils.file_exists(host_path) then
-        vim.g[host] = host_path
-    else
-        print(host .. " is not set by init.lua")
-    end
-end
-
 return utils
