@@ -43,6 +43,9 @@ local function init()
 
     vim.g.vimtex_quickfix_ignore_filters = {
         'bad break',
+        'Warning: Reference',
+        'Overfull',
+        'Warning: Difference',
     }
 
     vim.g.vimtex_mappings_enable = 0
