@@ -1,7 +1,7 @@
 -- General Options
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 vim.o.showmode = false -- Displayed in status line already
 vim.o.mouse = 'a'
 vim.o.undofile = true
@@ -13,7 +13,7 @@ vim.o.splitbelow = true
 -- UI setting
 vim.o.number = true
 vim.o.breakindent = true
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "no"
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.sidescrolloff = 10
@@ -21,6 +21,7 @@ vim.o.sidescrolloff = 10
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.foldcolumn = "1"
 vim.opt.colorcolumn = '80'
+vim.opt.foldmethod = 'expr'     -- foldexpr set in lua/plugins/tools/treesitter.lua
 
 -- Tabs
 vim.o.shiftwidth = 4
