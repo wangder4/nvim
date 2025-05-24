@@ -38,7 +38,7 @@ local opts = {
 	-- *** color scheme that will be used when installing plugins/
 	install = { colorscheme = { "habamax" } },
 	-- *** automatically check for plugin updates
-	checker = { enabled = false },
+	checker = { enabled = false, notify = false },
 	rocks = {
 		enabled = false,
 		hererocks = false,
