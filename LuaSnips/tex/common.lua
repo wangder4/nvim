@@ -44,17 +44,6 @@ table.insert(snippets, s(
 
 table.insert(snippets, s(
 {
-    trig = "sec", desc = "LaTeX section",
-    snippetType = "snippet",
-    condition = conds.line_begin,
-},
-    fmta([[
-    \section{<>}
-    ]], { i(1), })
-))
-
-table.insert(snippets, s(
-{
     trig = "#", desc = "LaTeX section",
     snippetType = "snippet",
     condition = conds.line_begin,
@@ -63,16 +52,6 @@ table.insert(snippets, s(
     \section{<>}
     ]], { i(1), })
 ))
-
-table.insert(snippets, s({
-    trig = "ssec", desc = "LaTeX subsection",
-    snippetType = "snippet",
-    condition = conds.line_begin,
-},
-    fmta([[
-    \subsection{<>}
-    ]], { i(1), })
-    ))
 
 table.insert(snippets, s({
     trig = "##", desc = "LaTeX subsection",
