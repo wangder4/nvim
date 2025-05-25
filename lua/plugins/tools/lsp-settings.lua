@@ -198,7 +198,7 @@ return {
                 },
             },
 
-            clangd= {
+            clangd = {
                 cmd = {
                     'clangd',
                     -- '--query-driver=/usr/bin**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
