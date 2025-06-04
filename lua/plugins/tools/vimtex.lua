@@ -32,11 +32,13 @@ local function init()
         styles = 0,
     }
 
+    -- To insert Unicode characters, Ctrl+v+u+4-digit hex code
     vim.g.vimtex_syntax_custom_cmds = {
         { name = 'complement', mathmode = 1, concealchar = '∁'},
         { name = 'compl', mathmode = 1, concealchar = '∁'},
         { name = 'O', mathmode = 1, concealchar = '∅'},
         { name = 'R', mathmode = 1, concealchar = 'ℝ'},
+        { name = 'N', mathmode = 1, concealchar = 'ℕ'},
         { name = 'Z', mathmode = 1, concealchar = 'ℤ'},
         { name = 'odif', mathmode = 1, concealchar = 'd'},
         { name = 'pdif', mathmode = 1, concealchar = '∂'},
