@@ -67,25 +67,55 @@ table.insert(snippets, s({
         local symbol = snip.captures[4]
         local output = ""
 
-        print(notion, start, finish, symbol)
+        local function split_string_by_paren(s)
+            local prefix, paren_part = s:match("^(.-)(%b())$")
+            if prefix then
+                return prefix, paren_part
+            end
+
+            prefix, paren_part = s:match("^(.-)(%b[])$")
+            if prefix then
+                return prefix, paren_part
+            end
+
+            return s, nil
+        end
 
         if (notion == 'seq') then
-            output = "%s_%d, %s_%d, \\dots, %s_%s"
-            return string.format(output,
-                symbol, start, symbol, start + 1, symbol, finish)
+            local symbol_prefix, symbol_postfix = split_string_by_paren(symbol)
+            if (symbol_postfix) then
+                output = "%s_{%d}%s, %s_{%d}%s, \\dots, %s_{%s}%s"
+                return string.format(output,
+                    symbol_prefix, start, symbol_postfix,
+                    symbol_prefix, start + 1, symbol_postfix,
+                    symbol_prefix, finish, symbol_postfix)
+            else
+                output = "%s_{%d}, %s_{%d}, \\dots, %s_{%s}"
+                return string.format(output,
+                    symbol, start, symbol, start + 1, symbol, finish)
+            end
         end
 
         if (notion == 'sum') then
             output = output .. '\\sum'
 
             if (start == '=') then
-                output = output .. string.format("_{%s = -\\infty}", symbol)
+                if (symbol == ',') then
+                    output = output .. "_{-\\infty}"
+                else
+                    output = output .. string.format("_{%s = -\\infty}", symbol)
+                end
             else
-                output = output .. string.format("_{%s = %s}", symbol, start)
+                if (symbol == ',') then
+                    output = output .. string.format("_{%s}", start)
+                else
+                    output = output .. string.format("_{%s = %s}", symbol, start)
+                end
             end
 
             if (finish == '=') then
                 output = output .. "^{\\infty}"
+            elseif (finish == ',') then
             else
                 output = output .. string.format("^{%s}", finish)
             end
@@ -97,13 +127,22 @@ table.insert(snippets, s({
             output = output .. '\\prod'
 
             if (start == '=') then
-                output = output .. string.format("_{%s = -\\infty}", symbol)
+                if (symbol == ',') then
+                    output = output .. "_{-\\infty}"
+                else
+                    output = output .. string.format("_{%s = -\\infty}", symbol)
+                end
             else
-                output = output .. string.format("_{%s = %s}", symbol, start)
+                if (symbol == ',') then
+                    output = output .. string.format("_{%s}", start)
+                else
+                    output = output .. string.format("_{%s = %s}", symbol, start)
+                end
             end
 
             if (finish == '=') then
                 output = output .. "^{\\infty}"
+            elseif (finish == ',') then
             else
                 output = output .. string.format("^{%s}", finish)
             end
@@ -115,13 +154,22 @@ table.insert(snippets, s({
             output = output .. '\\bigcup'
 
             if (start == '=') then
-                output = output .. string.format("_{%s = -\\infty}", symbol)
+                if (symbol == ',') then
+                    output = output .. "_{%s = -\\infty}"
+                else
+                    output = output .. string.format("_{%s = -\\infty}", symbol)
+                end
             else
-                output = output .. string.format("_{%s = %s}", symbol, start)
+                if (symbol == ',') then
+                    output = output .. string.format("_{%s}", start)
+                else
+                    output = output .. string.format("_{%s = %s}", symbol, start)
+                end
             end
 
             if (finish == '=') then
                 output = output .. "^{\\infty}"
+            elseif (finish == ',') then
             else
                 output = output .. string.format("^{%s}", finish)
             end
@@ -133,13 +181,22 @@ table.insert(snippets, s({
             output = output .. '\\bigcap'
 
             if (start == '=') then
-                output = output .. string.format("_{%s = -\\infty}", symbol)
+                if (symbol == ',') then
+                    output = output .. "_{%s = -\\infty}"
+                else
+                    output = output .. string.format("_{%s = -\\infty}", symbol)
+                end
             else
-                output = output .. string.format("_{%s = %s}", symbol, start)
+                if (symbol == ',') then
+                    output = output .. string.format("_{%s}", symbol, start)
+                else
+                    output = output .. string.format("_{%s = %s}", symbol, start)
+                end
             end
 
             if (finish == '=') then
                 output = output .. "^{\\infty}"
+            elseif (finish == ',') then
             else
                 output = output .. string.format("^{%s}", finish)
             end
