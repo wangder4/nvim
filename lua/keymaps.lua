@@ -25,7 +25,7 @@ vim.keymap.set('n', '<Space>o', '[zv]zzO')
 vim.keymap.set('n', '<Space>c', '[zv]zzc')
 
 -- Utility Mappings
-vim.keymap.set('n', '<ESE>', ':nohlsearch<CR>', { desc = 'Disable highlighted search content', silent = true })
+vim.keymap.set('n', '<CR>', ':nohlsearch<CR>', { desc = 'Disable highlighted search content', silent = true })
 vim.keymap.set('n', '||', ':lua pcall(ToggleCC)<CR>', { desc = 'Toggle colored column', silent = true })
 vim.keymap.set('n', '\\s', ':set spell!<CR>', { desc = 'Toggle spell check', silent = true })
 

@@ -13,12 +13,12 @@ vim.o.splitbelow = true
 -- UI setting
 vim.o.number = true
 vim.o.breakindent = true
-vim.o.signcolumn = "no"
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.sidescrolloff = 10
 -- vim.o.list = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.o.signcolumn = "yes"
 vim.opt.foldcolumn = "1"
 vim.opt.colorcolumn = '80'
 vim.opt.foldmethod = 'expr'     -- foldexpr set in lua/plugins/tools/treesitter.lua
@@ -52,13 +52,4 @@ vim.o.timeoutlen = 300 -- Decrease mapped sequence wait time
 vim.o.spell = true
 vim.opt.spelllang = { "en", "cjk" }
 
-vim.g.netrw_list_hide = [[.aux$,.o$,.fdb_latexmk$,.fls$,.synctex.gz$]]
-
--- local set = vim.opt
---
--- -- Visual options
--- set.foldexpr = "v:lua.require'conform'.formatexpr()"
---
--- -- Folding options
--- vim.wo.foldmethod = 'expr'
--- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.g.netrw_list_hide = [[.aux$,.o$,.fdb_latexmk$,.fls$,.synctex.gz$,.out$,.log$]]
